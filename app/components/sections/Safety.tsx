@@ -96,6 +96,72 @@ export default function Safety() {
         }}
       />
 
+      {/* Animated shield barrier waves */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div
+            key={i}
+            className="absolute left-0 w-full origin-left"
+            style={{
+              top: `${15 + i * 15}%`,
+              height: 1,
+              background: "linear-gradient(90deg, rgba(122,139,165,0.08), rgba(90,138,112,0.04), transparent)",
+              animation: `shieldWave ${4 + i}s ease-in-out ${i * 0.8}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Concentric protection rings */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[1, 2, 3].map((ring) => (
+          <div
+            key={ring}
+            className="absolute top-[50%] left-[25%] rounded-full"
+            style={{
+              width: ring * 250,
+              height: ring * 250,
+              border: `1px solid rgba(122,139,165,${0.06 - ring * 0.015})`,
+              transform: "translate(-50%, -50%)",
+              animation: `crosshairPulse ${5 + ring * 2}s ease-in-out ${ring}s infinite`,
+            }}
+          />
+        ))}
+        {/* Center shield node */}
+        <div
+          className="absolute top-[50%] left-[25%] -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
+          style={{
+            background: "rgba(122,139,165,0.15)",
+            boxShadow: "0 0 30px 8px rgba(122,139,165,0.05)",
+            animation: "pulseGlow 3s ease-in-out infinite",
+          }}
+        />
+      </div>
+
+      {/* Vertical security scan lines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[20, 50, 80].map((left, i) => (
+          <div
+            key={i}
+            className="absolute top-0 bottom-0"
+            style={{
+              left: `${left}%`,
+              width: 1,
+              background: "linear-gradient(180deg, transparent, rgba(122,139,165,0.03) 30%, rgba(122,139,165,0.03) 70%, transparent)",
+            }}
+          >
+            <div
+              className="absolute w-full"
+              style={{
+                height: 60,
+                background: "linear-gradient(180deg, transparent, rgba(122,139,165,0.1), transparent)",
+                animation: `dataPulse ${7 + i * 2}s ease-in-out ${i * 2.5}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-32">
         <div className="reveal mb-6">

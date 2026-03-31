@@ -78,6 +78,79 @@ export default function SystemArchitecture() {
         }}
       />
 
+      {/* Animated binary rain columns */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[8, 22, 38, 52, 67, 78, 92].map((left, i) => (
+          <div
+            key={i}
+            className="absolute top-0 flex flex-col gap-3 font-mono text-[8px]"
+            style={{
+              left: `${left}%`,
+              animation: `binaryRain ${8 + i * 1.5}s linear ${i * 1.2}s infinite`,
+              color: `rgba(138,129,158,${0.08 + (i % 3) * 0.03})`,
+            }}
+          >
+            {Array.from({ length: 30 }, (_, j) => (
+              <span key={j}>{((i * 7 + j * 13) % 2)}</span>
+            ))}
+          </div>
+        ))}
+      </div>
+
+      {/* Orbital system visualization */}
+      <div className="absolute inset-0 pointer-events-none">
+        {/* Center nexus */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+          style={{
+            background: "rgba(138,129,158,0.2)",
+            boxShadow: "0 0 20px 5px rgba(138,129,158,0.05)",
+          }}
+        />
+        {/* Orbital rings */}
+        {[200, 350, 500].map((size, i) => (
+          <div
+            key={i}
+            className="absolute top-1/2 left-1/2 rounded-full"
+            style={{
+              width: size,
+              height: size,
+              border: `1px solid rgba(138,129,158,${0.05 - i * 0.01})`,
+              animation: `${i % 2 === 0 ? "orbitalSpin" : "orbitalSpinReverse"} ${25 + i * 10}s linear infinite`,
+            }}
+          >
+            {/* Orbiting node */}
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"
+              style={{
+                background: `rgba(138,129,158,${0.3 - i * 0.05})`,
+                boxShadow: `0 0 6px 1px rgba(138,129,158,${0.15 - i * 0.03})`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Horizontal data bus lines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[20, 45, 70].map((top, i) => (
+          <div
+            key={i}
+            className="absolute left-0 w-full"
+            style={{ top: `${top}%`, height: 1, background: "linear-gradient(90deg, transparent, rgba(138,129,158,0.03) 20%, rgba(138,129,158,0.03) 80%, transparent)" }}
+          >
+            <div
+              className="absolute h-full"
+              style={{
+                width: 100,
+                background: "linear-gradient(90deg, transparent, rgba(138,129,158,0.12), transparent)",
+                animation: `sweepBeam ${10 + i * 3}s linear ${i * 2}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-32">
         <div className="reveal mb-6">

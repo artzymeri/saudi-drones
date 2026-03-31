@@ -88,6 +88,66 @@ export default function Payloads() {
         }}
       />
 
+      {/* Animated crosshair targeting system */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Central crosshair */}
+        <div className="absolute top-[35%] right-[15%]" style={{ animation: "crosshairPulse 4s ease-in-out infinite" }}>
+          {/* Horizontal line */}
+          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-32 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.15), transparent)", transform: "translate(-50%, -50%)" }} />
+          {/* Vertical line */}
+          <div className="absolute top-1/2 left-1/2 h-32 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.15), transparent)", transform: "translate(-50%, -50%)" }} />
+          {/* Center dot */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(165,112,110,0.25)" }} />
+          {/* Rotating target ring */}
+          <div
+            className="absolute top-1/2 left-1/2 w-20 h-20 rounded-full"
+            style={{
+              border: "1px dashed rgba(165,112,110,0.1)",
+              animation: "orbitalSpin 15s linear infinite",
+            }}
+          />
+        </div>
+
+        {/* Secondary crosshair */}
+        <div className="absolute bottom-[25%] left-[20%]" style={{ animation: "crosshairPulse 5s ease-in-out 1.5s infinite" }}>
+          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-20 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.1), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 h-20 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.1), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full" style={{ background: "rgba(165,112,110,0.2)" }} />
+        </div>
+      </div>
+
+      {/* Expanding threat detection rings */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[1, 2, 3].map((i) => (
+          <div
+            key={i}
+            className="absolute top-[35%] right-[15%] rounded-full"
+            style={{
+              width: 200,
+              height: 200,
+              border: "1px solid rgba(165,112,110,0.06)",
+              animation: `waveExpand ${5 + i * 2}s ease-out ${i * 1.5}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Diagonal scan lines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className="absolute w-px h-[200%] origin-top"
+            style={{
+              left: `${30 + i * 25}%`,
+              top: "-50%",
+              background: "linear-gradient(180deg, transparent 0%, rgba(165,112,110,0.03) 30%, rgba(165,112,110,0.03) 70%, transparent 100%)",
+              transform: `rotate(${15 + i * 5}deg)`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-32">
         <div className="reveal mb-6">

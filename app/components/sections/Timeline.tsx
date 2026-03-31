@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { Landmark } from "lucide-react";
+import Image from "next/image";
 
 const WEEKS = [
   {
@@ -91,6 +92,73 @@ export default function Timeline() {
           left: "-10%",
         }}
       />
+
+      {/* Animated countdown progress ticks */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Vertical progress columns representing weeks */}
+        {[12, 25, 38, 50, 62, 75, 88, 95].map((left, i) => (
+          <div
+            key={i}
+            className="absolute top-0 bottom-0"
+            style={{ left: `${left}%`, width: 1 }}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full"
+              style={{
+                background: `linear-gradient(180deg, transparent 0%, rgba(90,138,112,${0.02 + (i % 4) * 0.005}) 30%, rgba(90,138,112,${0.02 + (i % 4) * 0.005}) 70%, transparent 100%)`,
+              }}
+            />
+            {/* Rising tick mark */}
+            <div
+              className="absolute left-0 w-full"
+              style={{
+                height: 40 + (i % 3) * 20,
+                background: "linear-gradient(180deg, transparent, rgba(90,138,112,0.12), transparent)",
+                animation: `dataPulse ${5 + i * 1.2}s ease-in-out ${i * 0.8}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Horizontal sweep line — like a timeline cursor */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute left-0 w-full"
+          style={{
+            top: "50%",
+            height: 1,
+            background: "linear-gradient(90deg, transparent, rgba(90,138,112,0.04) 10%, rgba(90,138,112,0.04) 90%, transparent)",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              height: "100%",
+              width: 120,
+              background: "linear-gradient(90deg, transparent, rgba(90,138,112,0.15), transparent)",
+              animation: "sweepBeam 8s linear 0s infinite",
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Pulsing milestone dots */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[{x: 25, y: 30}, {x: 50, y: 50}, {x: 75, y: 40}, {x: 90, y: 60}].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute w-1.5 h-1.5 rounded-full"
+            style={{
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              background: "rgba(90,138,112,0.2)",
+              boxShadow: "0 0 12px 3px rgba(90,138,112,0.06)",
+              animation: `pulseGlow ${3 + i}s ease-in-out ${i * 0.7}s infinite`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-32">
@@ -256,6 +324,47 @@ export default function Timeline() {
               ))}
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="max-w-7xl mx-auto mt-40 sm:mt-52">
+        <div className="section-divider mb-20" />
+
+        <div className="flex flex-col items-center text-center">
+          {/* Logos */}
+          <div className="reveal flex items-center gap-6 mb-12">
+            <Image
+              src="/saudi_emblem.png"
+              alt="Saudi Emblem"
+              width={36}
+              height={36}
+              className="opacity-30"
+            />
+            <div className="h-6 w-px bg-[var(--border)]" />
+            <Image
+              src="/saudi_ministry_of_defence.svg"
+              alt="Ministry of Defence"
+              width={36}
+              height={36}
+              className="opacity-30 invert"
+            />
+            <div className="h-6 w-px bg-[var(--border)]" />
+            <Image
+              src="/saudi_vision_2030.png"
+              alt="Vision 2030"
+              width={36}
+              height={36}
+              className="opacity-30"
+            />
+          </div>
+
+          <p className="reveal delay-1 text-[11px] tracking-[0.25em] uppercase text-[var(--text-muted)] mb-2">
+            Saudi Ministry of Defence
+          </p>
+          <p className="reveal delay-2 text-[10px] tracking-[0.2em] uppercase text-[var(--text-muted)] opacity-40">
+            Classified — Internal Use Only
+          </p>
         </div>
       </div>
     </section>

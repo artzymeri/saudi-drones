@@ -11,7 +11,6 @@ import SystemArchitecture from "./components/sections/SystemArchitecture";
 import Payloads from "./components/sections/Payloads";
 import Safety from "./components/sections/Safety";
 import Timeline from "./components/sections/Timeline";
-import Video from "./components/sections/Video";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -41,7 +40,6 @@ export default function Home() {
               <Payloads />
               <Safety />
               <Timeline />
-              <Video />
             </main>
           </motion.div>
         )}

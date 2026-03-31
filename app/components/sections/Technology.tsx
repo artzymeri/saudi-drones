@@ -73,6 +73,65 @@ export default function Technology() {
         }}
       />
 
+      {/* Animated circuit traces — vertical data flow lines */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[15, 30, 55, 75, 88].map((left, i) => (
+          <div
+            key={i}
+            className="absolute top-0 h-full"
+            style={{ left: `${left}%`, width: 1 }}
+          >
+            <div
+              className="absolute top-0 left-0 w-full"
+              style={{
+                height: "100%",
+                background:
+                  "linear-gradient(180deg, transparent 0%, rgba(122,139,165,0.04) 20%, rgba(122,139,165,0.04) 80%, transparent 100%)",
+              }}
+            />
+            {/* Flowing pulse */}
+            <div
+              className="absolute left-0 w-full rounded-full"
+              style={{
+                height: 80 + i * 30,
+                background:
+                  "linear-gradient(180deg, transparent, rgba(122,139,165,0.15), transparent)",
+                animation: `dataPulse ${6 + i * 2}s ease-in-out ${i * 1.5}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Horizontal connection traces */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[25, 50, 75].map((top, i) => (
+          <div
+            key={i}
+            className="absolute left-0 w-full"
+            style={{
+              top: `${top}%`,
+              height: 1,
+              background:
+                "linear-gradient(90deg, transparent 0%, rgba(122,139,165,0.03) 10%, rgba(122,139,165,0.03) 90%, transparent 100%)",
+            }}
+          >
+            {/* Junction dots */}
+            {[15, 30, 55, 75, 88].map((x, j) => (
+              <div
+                key={j}
+                className="absolute top-1/2 -translate-y-1/2 w-1 h-1 rounded-full"
+                style={{
+                  left: `${x}%`,
+                  background: "rgba(122,139,165,0.15)",
+                  animation: `pulseGlow ${3 + j}s ease-in-out ${j * 0.5}s infinite`,
+                }}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+
       {/* Decorative vertical line */}
       <div
         className="absolute left-[12%] top-0 bottom-0 w-px hidden lg:block"
