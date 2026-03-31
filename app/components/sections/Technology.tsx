@@ -60,22 +60,33 @@ export default function Technology() {
       className="relative py-40 sm:py-52 px-6 overflow-hidden section-gradient-steel"
     >
       {/* Background decorations */}
-      <div className="absolute inset-0 grid-bg opacity-20" />
+      <div className="absolute inset-0 grid-bg opacity-30" />
       <div
         className="orb"
         style={{
-          width: 900,
-          height: 900,
+          width: 1000,
+          height: 1000,
           background:
-            "radial-gradient(circle, rgba(122,139,165,0.05), transparent 60%)",
+            "radial-gradient(circle, rgba(122,139,165,0.08), transparent 60%)",
           top: "-10%",
           right: "-15%",
+        }}
+      />
+      <div
+        className="orb"
+        style={{
+          width: 600,
+          height: 600,
+          background:
+            "radial-gradient(circle, rgba(122,139,165,0.06), transparent 60%)",
+          bottom: "10%",
+          left: "-10%",
         }}
       />
 
       {/* Animated circuit traces — vertical data flow lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[15, 30, 55, 75, 88].map((left, i) => (
+        {[8, 18, 30, 42, 55, 68, 78, 88, 95].map((left, i) => (
           <div
             key={i}
             className="absolute top-0 h-full"
@@ -86,26 +97,26 @@ export default function Technology() {
               style={{
                 height: "100%",
                 background:
-                  "linear-gradient(180deg, transparent 0%, rgba(122,139,165,0.04) 20%, rgba(122,139,165,0.04) 80%, transparent 100%)",
+                  "linear-gradient(180deg, transparent 0%, rgba(122,139,165,0.07) 20%, rgba(122,139,165,0.07) 80%, transparent 100%)",
               }}
             />
             {/* Flowing pulse */}
             <div
               className="absolute left-0 w-full rounded-full"
               style={{
-                height: 80 + i * 30,
+                height: 100 + i * 40,
                 background:
-                  "linear-gradient(180deg, transparent, rgba(122,139,165,0.15), transparent)",
-                animation: `dataPulse ${6 + i * 2}s ease-in-out ${i * 1.5}s infinite`,
+                  "linear-gradient(180deg, transparent, rgba(122,139,165,0.3), transparent)",
+                animation: `${i % 2 === 0 ? 'dataPulse' : 'dataPulseDown'} ${4 + i * 1.2}s ease-in-out ${i * 0.8}s infinite`,
               }}
             />
           </div>
         ))}
       </div>
 
-      {/* Horizontal connection traces */}
+      {/* Horizontal connection traces with moving beams */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[25, 50, 75].map((top, i) => (
+        {[15, 30, 45, 60, 75, 88].map((top, i) => (
           <div
             key={i}
             className="absolute left-0 w-full"
@@ -113,23 +124,67 @@ export default function Technology() {
               top: `${top}%`,
               height: 1,
               background:
-                "linear-gradient(90deg, transparent 0%, rgba(122,139,165,0.03) 10%, rgba(122,139,165,0.03) 90%, transparent 100%)",
+                "linear-gradient(90deg, transparent 0%, rgba(122,139,165,0.06) 10%, rgba(122,139,165,0.06) 90%, transparent 100%)",
             }}
           >
+            {/* Sweeping light beam */}
+            <div
+              className="absolute h-full"
+              style={{
+                width: 150,
+                background: "linear-gradient(90deg, transparent, rgba(122,139,165,0.25), transparent)",
+                animation: `sweepBeam ${8 + i * 2}s linear ${i * 1.5}s infinite`,
+              }}
+            />
             {/* Junction dots */}
-            {[15, 30, 55, 75, 88].map((x, j) => (
+            {[8, 18, 30, 42, 55, 68, 78, 88, 95].map((x, j) => (
               <div
                 key={j}
-                className="absolute top-1/2 -translate-y-1/2 w-1 h-1 rounded-full"
+                className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full"
                 style={{
                   left: `${x}%`,
-                  background: "rgba(122,139,165,0.15)",
-                  animation: `pulseGlow ${3 + j}s ease-in-out ${j * 0.5}s infinite`,
+                  background: "rgba(122,139,165,0.25)",
+                  animation: `pulseGlow ${2 + j * 0.5}s ease-in-out ${j * 0.3}s infinite`,
                 }}
               />
             ))}
           </div>
         ))}
+      </div>
+
+      {/* Floating circuit node clusters */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 12, y: 20, s: 6 }, { x: 75, y: 15, s: 8 }, { x: 40, y: 70, s: 5 },
+          { x: 88, y: 55, s: 7 }, { x: 25, y: 85, s: 4 }, { x: 60, y: 40, s: 6 },
+          { x: 5, y: 50, s: 5 }, { x: 92, y: 80, s: 4 },
+        ].map((node, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              left: `${node.x}%`,
+              top: `${node.y}%`,
+              width: node.s,
+              height: node.s,
+              background: `rgba(122,139,165,${0.15 + (i % 3) * 0.08})`,
+              boxShadow: `0 0 ${node.s * 3}px ${node.s}px rgba(122,139,165,${0.06 + (i % 3) * 0.03})`,
+              animation: `floatDrift ${8 + i * 2}s ease-in-out ${i * 1.2}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Full-width horizontal scan beam */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute left-0 w-full"
+          style={{
+            height: 2,
+            background: "linear-gradient(90deg, transparent, rgba(122,139,165,0.15), rgba(122,139,165,0.3), rgba(122,139,165,0.15), transparent)",
+            animation: "scanVertical 12s linear infinite",
+          }}
+        />
       </div>
 
       {/* Decorative vertical line */}

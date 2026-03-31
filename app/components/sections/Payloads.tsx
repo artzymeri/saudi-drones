@@ -74,78 +74,187 @@ export default function Payloads() {
       ref={ref}
       className="relative py-40 sm:py-52 px-6 overflow-hidden section-gradient-rose"
     >
-      <div className="absolute inset-0 grid-bg opacity-15" />
+      <div className="absolute inset-0 grid-bg opacity-25" />
 
       <div
         className="orb"
         style={{
-          width: 700,
-          height: 700,
+          width: 800,
+          height: 800,
           background:
-            "radial-gradient(circle, rgba(165,112,110,0.05), transparent 60%)",
+            "radial-gradient(circle, rgba(165,112,110,0.08), transparent 60%)",
           top: "10%",
           left: "-10%",
+        }}
+      />
+      <div
+        className="orb"
+        style={{
+          width: 600,
+          height: 600,
+          background:
+            "radial-gradient(circle, rgba(165,112,110,0.06), transparent 60%)",
+          bottom: "5%",
+          right: "-12%",
         }}
       />
 
       {/* Animated crosshair targeting system */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Central crosshair */}
-        <div className="absolute top-[35%] right-[15%]" style={{ animation: "crosshairPulse 4s ease-in-out infinite" }}>
+        {/* Primary crosshair — large */}
+        <div className="absolute top-[30%] right-[18%]" style={{ animation: "crosshairPulse 3.5s ease-in-out infinite" }}>
           {/* Horizontal line */}
-          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-32 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.15), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 w-48 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.25), transparent)", transform: "translate(-50%, -50%)" }} />
           {/* Vertical line */}
-          <div className="absolute top-1/2 left-1/2 h-32 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.15), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 h-48 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.25), transparent)", transform: "translate(-50%, -50%)" }} />
           {/* Center dot */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(165,112,110,0.25)" }} />
-          {/* Rotating target ring */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full" style={{ background: "rgba(165,112,110,0.4)", boxShadow: "0 0 15px 5px rgba(165,112,110,0.1)" }} />
+          {/* Inner rotating target ring */}
           <div
-            className="absolute top-1/2 left-1/2 w-20 h-20 rounded-full"
+            className="absolute top-1/2 left-1/2 w-16 h-16 rounded-full"
             style={{
-              border: "1px dashed rgba(165,112,110,0.1)",
-              animation: "orbitalSpin 15s linear infinite",
+              border: "1px dashed rgba(165,112,110,0.2)",
+              animation: "orbitalSpin 10s linear infinite",
             }}
           />
+          {/* Outer rotating target ring */}
+          <div
+            className="absolute top-1/2 left-1/2 w-32 h-32 rounded-full"
+            style={{
+              border: "1px dashed rgba(165,112,110,0.12)",
+              animation: "orbitalSpinReverse 15s linear infinite",
+            }}
+          />
+          {/* Corner brackets */}
+          {[
+            { t: "calc(50% - 40px)", l: "calc(50% - 40px)", bT: "1px solid rgba(165,112,110,0.2)", bL: "1px solid rgba(165,112,110,0.2)" },
+            { t: "calc(50% - 40px)", l: "calc(50% + 30px)", bT: "1px solid rgba(165,112,110,0.2)", bR: "1px solid rgba(165,112,110,0.2)" },
+            { t: "calc(50% + 30px)", l: "calc(50% - 40px)", bB: "1px solid rgba(165,112,110,0.2)", bL: "1px solid rgba(165,112,110,0.2)" },
+            { t: "calc(50% + 30px)", l: "calc(50% + 30px)", bB: "1px solid rgba(165,112,110,0.2)", bR: "1px solid rgba(165,112,110,0.2)" },
+          ].map((bracket, i) => (
+            <div
+              key={i}
+              className="absolute w-2.5 h-2.5"
+              style={{
+                top: bracket.t, left: bracket.l,
+                borderTop: bracket.bT || "none", borderLeft: bracket.bL || "none",
+                borderRight: bracket.bR || "none", borderBottom: bracket.bB || "none",
+              }}
+            />
+          ))}
         </div>
 
         {/* Secondary crosshair */}
-        <div className="absolute bottom-[25%] left-[20%]" style={{ animation: "crosshairPulse 5s ease-in-out 1.5s infinite" }}>
-          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-20 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.1), transparent)", transform: "translate(-50%, -50%)" }} />
-          <div className="absolute top-1/2 left-1/2 h-20 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.1), transparent)", transform: "translate(-50%, -50%)" }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full" style={{ background: "rgba(165,112,110,0.2)" }} />
+        <div className="absolute bottom-[20%] left-[15%]" style={{ animation: "crosshairPulse 4.5s ease-in-out 1.5s infinite" }}>
+          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-28 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.2), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 h-28 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.2), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full" style={{ background: "rgba(165,112,110,0.3)" }} />
+          <div
+            className="absolute top-1/2 left-1/2 w-24 h-24 rounded-full"
+            style={{ border: "1px dashed rgba(165,112,110,0.1)", animation: "orbitalSpin 12s linear infinite" }}
+          />
+        </div>
+
+        {/* Tertiary crosshair — top left */}
+        <div className="absolute top-[15%] left-[40%]" style={{ animation: "crosshairPulse 5s ease-in-out 3s infinite" }}>
+          <div className="absolute top-1/2 left-1/2 -translate-y-1/2 w-16 h-px" style={{ background: "linear-gradient(90deg, transparent, rgba(165,112,110,0.15), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 h-16 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.15), transparent)", transform: "translate(-50%, -50%)" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(165,112,110,0.25)" }} />
         </div>
       </div>
 
-      {/* Expanding threat detection rings */}
+      {/* Expanding threat detection rings — from multiple origins */}
       <div className="absolute inset-0 pointer-events-none">
-        {[1, 2, 3].map((i) => (
+        {/* From primary crosshair */}
+        {[1, 2, 3, 4].map((i) => (
           <div
-            key={i}
-            className="absolute top-[35%] right-[15%] rounded-full"
+            key={`p-${i}`}
+            className="absolute top-[30%] right-[18%] rounded-full"
             style={{
               width: 200,
               height: 200,
-              border: "1px solid rgba(165,112,110,0.06)",
-              animation: `waveExpand ${5 + i * 2}s ease-out ${i * 1.5}s infinite`,
+              border: `1px solid rgba(165,112,110,${0.12 - i * 0.02})`,
+              animation: `waveExpand ${4 + i * 1.5}s ease-out ${i * 1.2}s infinite`,
+            }}
+          />
+        ))}
+        {/* From secondary crosshair */}
+        {[1, 2, 3].map((i) => (
+          <div
+            key={`s-${i}`}
+            className="absolute bottom-[20%] left-[15%] rounded-full"
+            style={{
+              width: 180,
+              height: 180,
+              border: `1px solid rgba(165,112,110,${0.1 - i * 0.02})`,
+              animation: `waveExpand ${5 + i * 2}s ease-out ${i * 1.8}s infinite`,
             }}
           />
         ))}
       </div>
 
-      {/* Diagonal scan lines */}
+      {/* Diagonal scan lines — angled grid */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[0, 1, 2].map((i) => (
+        {[0, 1, 2, 3, 4].map((i) => (
           <div
             key={i}
             className="absolute w-px h-[200%] origin-top"
             style={{
-              left: `${30 + i * 25}%`,
+              left: `${15 + i * 18}%`,
               top: "-50%",
-              background: "linear-gradient(180deg, transparent 0%, rgba(165,112,110,0.03) 30%, rgba(165,112,110,0.03) 70%, transparent 100%)",
-              transform: `rotate(${15 + i * 5}deg)`,
+              background: `linear-gradient(180deg, transparent 0%, rgba(165,112,110,${0.06 - i * 0.008}) 30%, rgba(165,112,110,${0.06 - i * 0.008}) 70%, transparent 100%)`,
+              transform: `rotate(${12 + i * 4}deg)`,
             }}
           />
         ))}
+        {/* Counter-angle lines */}
+        {[0, 1, 2].map((i) => (
+          <div
+            key={`c-${i}`}
+            className="absolute w-px h-[200%] origin-top"
+            style={{
+              left: `${25 + i * 30}%`,
+              top: "-50%",
+              background: "linear-gradient(180deg, transparent 0%, rgba(165,112,110,0.04) 30%, rgba(165,112,110,0.04) 70%, transparent 100%)",
+              transform: `rotate(${-10 - i * 5}deg)`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Warning indicator pulses */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 8, y: 25 }, { x: 92, y: 40 }, { x: 50, y: 8 },
+          { x: 20, y: 70 }, { x: 75, y: 85 }, { x: 65, y: 15 },
+          { x: 35, y: 55 }, { x: 85, y: 65 },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+          >
+            <div
+              className="w-1.5 h-1.5 rounded-full"
+              style={{
+                background: `rgba(165,112,110,${0.2 + (i % 3) * 0.08})`,
+                boxShadow: "0 0 8px 2px rgba(165,112,110,0.08)",
+                animation: `warningBlink ${2 + i * 0.5}s ease-in-out ${i * 0.6}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Horizontal radar sweep */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute top-0 bottom-0 w-px"
+          style={{
+            background: "linear-gradient(180deg, transparent, rgba(165,112,110,0.2), rgba(165,112,110,0.08), transparent)",
+            animation: "sweepBeam 6s linear infinite",
+          }}
+        />
       </div>
 
       {/* Header */}

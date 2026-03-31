@@ -73,92 +73,211 @@ export default function Safety() {
       ref={ref}
       className="relative py-40 sm:py-52 px-6 overflow-hidden"
     >
-      <div className="absolute inset-0 grid-bg opacity-15" />
+      <div className="absolute inset-0 grid-bg opacity-25" />
 
       {/* Dramatic background gradient */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 40% at 70% 30%, rgba(122,139,165,0.04) 0%, transparent 70%)",
+            "radial-gradient(ellipse 60% 40% at 70% 30%, rgba(122,139,165,0.07) 0%, transparent 70%)",
         }}
       />
 
       <div
         className="orb"
         style={{
-          width: 800,
-          height: 800,
+          width: 900,
+          height: 900,
           background:
-            "radial-gradient(circle, rgba(165,112,110,0.04), transparent 60%)",
+            "radial-gradient(circle, rgba(165,112,110,0.07), transparent 60%)",
           bottom: "5%",
           right: "-15%",
         }}
       />
+      <div
+        className="orb"
+        style={{
+          width: 700,
+          height: 700,
+          background:
+            "radial-gradient(circle, rgba(122,139,165,0.06), transparent 60%)",
+          top: "0%",
+          left: "-10%",
+        }}
+      />
 
-      {/* Animated shield barrier waves */}
+      {/* Animated shield barrier waves — more layers, more visibility */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[1, 2, 3, 4, 5].map((i) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
           <div
             key={i}
             className="absolute left-0 w-full origin-left"
             style={{
-              top: `${15 + i * 15}%`,
+              top: `${8 + i * 11}%`,
               height: 1,
-              background: "linear-gradient(90deg, rgba(122,139,165,0.08), rgba(90,138,112,0.04), transparent)",
-              animation: `shieldWave ${4 + i}s ease-in-out ${i * 0.8}s infinite`,
+              background: `linear-gradient(90deg, rgba(122,139,165,${0.15 - (i % 3) * 0.03}), rgba(90,138,112,0.08), transparent)`,
+              animation: `shieldWave ${3 + i * 0.6}s ease-in-out ${i * 0.5}s infinite`,
             }}
           />
         ))}
       </div>
 
-      {/* Concentric protection rings */}
+      {/* Concentric protection rings — brighter and more rings */}
       <div className="absolute inset-0 pointer-events-none">
-        {[1, 2, 3].map((ring) => (
+        {[1, 2, 3, 4, 5].map((ring) => (
           <div
             key={ring}
             className="absolute top-[50%] left-[25%] rounded-full"
             style={{
-              width: ring * 250,
-              height: ring * 250,
-              border: `1px solid rgba(122,139,165,${0.06 - ring * 0.015})`,
+              width: ring * 200,
+              height: ring * 200,
+              border: `1px solid rgba(122,139,165,${0.12 - ring * 0.018})`,
               transform: "translate(-50%, -50%)",
-              animation: `crosshairPulse ${5 + ring * 2}s ease-in-out ${ring}s infinite`,
+              animation: `crosshairPulse ${4 + ring * 1.5}s ease-in-out ${ring * 0.8}s infinite`,
             }}
           />
         ))}
-        {/* Center shield node */}
+        {/* Center shield node — brighter */}
         <div
-          className="absolute top-[50%] left-[25%] -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
+          className="absolute top-[50%] left-[25%] -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full"
           style={{
-            background: "rgba(122,139,165,0.15)",
-            boxShadow: "0 0 30px 8px rgba(122,139,165,0.05)",
-            animation: "pulseGlow 3s ease-in-out infinite",
+            background: "rgba(122,139,165,0.3)",
+            boxShadow: "0 0 50px 15px rgba(122,139,165,0.1)",
+            animation: "pulseGlow 2.5s ease-in-out infinite",
           }}
         />
+        {/* Rotating shield arcs */}
+        <div
+          className="absolute top-[50%] left-[25%] rounded-full"
+          style={{
+            width: 160,
+            height: 160,
+            border: "2px dashed rgba(122,139,165,0.1)",
+            animation: "orbitalSpin 20s linear infinite",
+          }}
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full" style={{ background: "rgba(122,139,165,0.3)", boxShadow: "0 0 8px 2px rgba(122,139,165,0.12)" }} />
+        </div>
+        <div
+          className="absolute top-[50%] left-[25%] rounded-full"
+          style={{
+            width: 280,
+            height: 280,
+            border: "1px dashed rgba(122,139,165,0.07)",
+            animation: "orbitalSpinReverse 28s linear infinite",
+          }}
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(122,139,165,0.25)" }} />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(122,139,165,0.2)" }} />
+        </div>
       </div>
 
-      {/* Vertical security scan lines */}
+      {/* Vertical security scan lines — more lines, brighter */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[20, 50, 80].map((left, i) => (
+        {[12, 28, 42, 58, 72, 88].map((left, i) => (
           <div
             key={i}
             className="absolute top-0 bottom-0"
             style={{
               left: `${left}%`,
               width: 1,
-              background: "linear-gradient(180deg, transparent, rgba(122,139,165,0.03) 30%, rgba(122,139,165,0.03) 70%, transparent)",
+              background: `linear-gradient(180deg, transparent, rgba(122,139,165,${0.06 - (i % 2) * 0.02}) 30%, rgba(122,139,165,${0.06 - (i % 2) * 0.02}) 70%, transparent)`,
             }}
           >
             <div
               className="absolute w-full"
               style={{
-                height: 60,
-                background: "linear-gradient(180deg, transparent, rgba(122,139,165,0.1), transparent)",
-                animation: `dataPulse ${7 + i * 2}s ease-in-out ${i * 2.5}s infinite`,
+                height: 80 + (i % 3) * 30,
+                background: "linear-gradient(180deg, transparent, rgba(122,139,165,0.2), transparent)",
+                animation: `dataPulse ${5 + i * 1.5}s ease-in-out ${i * 1.2}s infinite`,
               }}
             />
           </div>
+        ))}
+      </div>
+
+      {/* Hexagonal shield grid nodes */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 70, y: 20 }, { x: 80, y: 35 }, { x: 65, y: 50 },
+          { x: 85, y: 65 }, { x: 75, y: 80 }, { x: 90, y: 45 },
+          { x: 60, y: 30 }, { x: 55, y: 70 }, { x: 95, y: 25 },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute"
+            style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
+          >
+            {/* Hex node */}
+            <div
+              className="w-2 h-2 rounded-full"
+              style={{
+                background: `rgba(122,139,165,${0.15 + (i % 3) * 0.06})`,
+                boxShadow: `0 0 10px 3px rgba(122,139,165,0.06)`,
+                animation: `pulseGlow ${3 + i * 0.8}s ease-in-out ${i * 0.5}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+        {/* Connecting lines between nearby nodes */}
+        {[
+          { x1: 70, y1: 20, x2: 80, y2: 35 },
+          { x1: 80, y1: 35, x2: 65, y2: 50 },
+          { x1: 85, y1: 65, x2: 75, y2: 80 },
+          { x1: 65, y1: 50, x2: 85, y2: 65 },
+        ].map((line, i) => {
+          const dx = line.x2 - line.x1;
+          const dy = line.y2 - line.y1;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+          return (
+            <div
+              key={`line-${i}`}
+              className="absolute"
+              style={{
+                left: `${line.x1}%`,
+                top: `${line.y1}%`,
+                width: `${length}%`,
+                height: 1,
+                background: "rgba(122,139,165,0.06)",
+                transform: `rotate(${angle}deg)`,
+                transformOrigin: "0 0",
+              }}
+            />
+          );
+        })}
+      </div>
+
+      {/* Horizontal scanning beam */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div
+          className="absolute left-0 w-full"
+          style={{
+            height: 2,
+            background: "linear-gradient(90deg, transparent, rgba(122,139,165,0.12), rgba(122,139,165,0.25), rgba(122,139,165,0.12), transparent)",
+            animation: "scanVertical 10s linear infinite",
+          }}
+        />
+      </div>
+
+      {/* Floating barrier particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 5, y: 20 }, { x: 35, y: 45 }, { x: 50, y: 15 },
+          { x: 15, y: 75 }, { x: 45, y: 85 }, { x: 30, y: 35 },
+          { x: 8, y: 55 }, { x: 40, y: 65 },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full"
+            style={{
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              background: `rgba(122,139,165,${0.18 + (i % 3) * 0.06})`,
+              animation: `particleFloat ${7 + i * 1.5}s ease-in-out ${i * 1}s infinite`,
+            }}
+          />
         ))}
       </div>
 

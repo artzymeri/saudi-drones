@@ -79,24 +79,35 @@ export default function Timeline() {
       ref={ref}
       className="relative py-40 sm:py-52 px-6 overflow-hidden section-gradient-green"
     >
-      <div className="absolute inset-0 grid-bg opacity-15" />
+      <div className="absolute inset-0 grid-bg opacity-25" />
 
       <div
         className="orb"
         style={{
-          width: 700,
-          height: 700,
+          width: 800,
+          height: 800,
           background:
-            "radial-gradient(circle, rgba(90,138,112,0.05), transparent 60%)",
-          top: "30%",
+            "radial-gradient(circle, rgba(90,138,112,0.08), transparent 60%)",
+          top: "20%",
           left: "-10%",
         }}
       />
+      <div
+        className="orb"
+        style={{
+          width: 600,
+          height: 600,
+          background:
+            "radial-gradient(circle, rgba(90,138,112,0.06), transparent 60%)",
+          bottom: "10%",
+          right: "-8%",
+        }}
+      />
 
-      {/* Animated countdown progress ticks */}
+      {/* Animated countdown progress ticks — more columns, brighter */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Vertical progress columns representing weeks */}
-        {[12, 25, 38, 50, 62, 75, 88, 95].map((left, i) => (
+        {[6, 12, 20, 28, 36, 44, 52, 60, 68, 76, 84, 92, 97].map((left, i) => (
           <div
             key={i}
             className="absolute top-0 bottom-0"
@@ -105,56 +116,137 @@ export default function Timeline() {
             <div
               className="absolute top-0 left-0 w-full h-full"
               style={{
-                background: `linear-gradient(180deg, transparent 0%, rgba(90,138,112,${0.02 + (i % 4) * 0.005}) 30%, rgba(90,138,112,${0.02 + (i % 4) * 0.005}) 70%, transparent 100%)`,
+                background: `linear-gradient(180deg, transparent 0%, rgba(90,138,112,${0.04 + (i % 4) * 0.01}) 30%, rgba(90,138,112,${0.04 + (i % 4) * 0.01}) 70%, transparent 100%)`,
               }}
             />
-            {/* Rising tick mark */}
+            {/* Rising tick mark — brighter */}
             <div
               className="absolute left-0 w-full"
               style={{
-                height: 40 + (i % 3) * 20,
-                background: "linear-gradient(180deg, transparent, rgba(90,138,112,0.12), transparent)",
-                animation: `dataPulse ${5 + i * 1.2}s ease-in-out ${i * 0.8}s infinite`,
+                height: 60 + (i % 3) * 30,
+                background: `linear-gradient(180deg, transparent, rgba(90,138,112,${0.25 + (i % 2) * 0.1}), transparent)`,
+                animation: `${i % 2 === 0 ? 'dataPulse' : 'dataPulseDown'} ${4 + i * 0.8}s ease-in-out ${i * 0.5}s infinite`,
               }}
             />
           </div>
         ))}
       </div>
 
-      {/* Horizontal sweep line — like a timeline cursor */}
+      {/* Horizontal sweep lines — multiple sweeps */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute left-0 w-full"
-          style={{
-            top: "50%",
-            height: 1,
-            background: "linear-gradient(90deg, transparent, rgba(90,138,112,0.04) 10%, rgba(90,138,112,0.04) 90%, transparent)",
-          }}
-        >
-          <div
-            style={{
-              position: "absolute",
-              height: "100%",
-              width: 120,
-              background: "linear-gradient(90deg, transparent, rgba(90,138,112,0.15), transparent)",
-              animation: "sweepBeam 8s linear 0s infinite",
-            }}
-          />
-        </div>
-      </div>
-
-      {/* Pulsing milestone dots */}
-      <div className="absolute inset-0 pointer-events-none">
-        {[{x: 25, y: 30}, {x: 50, y: 50}, {x: 75, y: 40}, {x: 90, y: 60}].map((pos, i) => (
+        {[25, 50, 75].map((top, i) => (
           <div
             key={i}
-            className="absolute w-1.5 h-1.5 rounded-full"
+            className="absolute left-0 w-full"
+            style={{
+              top: `${top}%`,
+              height: 1,
+              background: `linear-gradient(90deg, transparent, rgba(90,138,112,${0.06 - i * 0.01}) 10%, rgba(90,138,112,${0.06 - i * 0.01}) 90%, transparent)`,
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                height: "100%",
+                width: 180,
+                background: "linear-gradient(90deg, transparent, rgba(90,138,112,0.3), transparent)",
+                animation: `sweepBeam ${6 + i * 2}s linear ${i * 1.5}s infinite`,
+              }}
+            />
+          </div>
+        ))}
+      </div>
+
+      {/* Pulsing milestone dots — more dots, brighter */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[
+          { x: 12, y: 20 }, { x: 25, y: 30 }, { x: 38, y: 45 },
+          { x: 50, y: 50 }, { x: 62, y: 35 }, { x: 75, y: 40 },
+          { x: 88, y: 55 }, { x: 90, y: 60 }, { x: 30, y: 70 },
+          { x: 55, y: 75 }, { x: 70, y: 25 }, { x: 45, y: 65 },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
             style={{
               left: `${pos.x}%`,
               top: `${pos.y}%`,
-              background: "rgba(90,138,112,0.2)",
-              boxShadow: "0 0 12px 3px rgba(90,138,112,0.06)",
-              animation: `pulseGlow ${3 + i}s ease-in-out ${i * 0.7}s infinite`,
+              width: 3 + (i % 3),
+              height: 3 + (i % 3),
+              background: `rgba(90,138,112,${0.25 + (i % 3) * 0.08})`,
+              boxShadow: `0 0 15px 4px rgba(90,138,112,${0.08 + (i % 3) * 0.03})`,
+              animation: `pulseGlow ${2 + i * 0.5}s ease-in-out ${i * 0.4}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Connecting progress lines between milestones */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x1: 12, y1: 20, x2: 25, y2: 30 },
+          { x1: 25, y1: 30, x2: 38, y2: 45 },
+          { x1: 38, y1: 45, x2: 50, y2: 50 },
+          { x1: 50, y1: 50, x2: 62, y2: 35 },
+          { x1: 62, y1: 35, x2: 75, y2: 40 },
+          { x1: 75, y1: 40, x2: 88, y2: 55 },
+        ].map((line, i) => {
+          const dx = line.x2 - line.x1;
+          const dy = line.y2 - line.y1;
+          const length = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+          return (
+            <div
+              key={i}
+              className="absolute"
+              style={{
+                left: `${line.x1}%`,
+                top: `${line.y1}%`,
+                width: `${length}%`,
+                height: 1,
+                background: `rgba(90,138,112,${0.06 - i * 0.005})`,
+                transform: `rotate(${angle}deg)`,
+                transformOrigin: "0 0",
+                animation: `gridFlicker ${5 + i}s ease-in-out ${i * 0.8}s infinite`,
+              }}
+            />
+          );
+        })}
+      </div>
+
+      {/* Progress fill bars — representing week completion */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[20, 40, 60, 80].map((top, i) => (
+          <div
+            key={i}
+            className="absolute h-px"
+            style={{
+              left: `${10 + i * 5}%`,
+              top: `${top}%`,
+              width: `${15 + i * 3}%`,
+              background: "rgba(90,138,112,0.15)",
+              transformOrigin: "left",
+              animation: `progressFill ${4 + i * 1.5}s ease-out ${i * 2}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating progress particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 8, y: 35 }, { x: 22, y: 55 }, { x: 42, y: 25 },
+          { x: 58, y: 80 }, { x: 78, y: 15 }, { x: 92, y: 70 },
+          { x: 35, y: 90 }, { x: 65, y: 60 },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full"
+            style={{
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              background: `rgba(90,138,112,${0.2 + (i % 3) * 0.06})`,
+              animation: `particleFloat ${6 + i * 1.3}s ease-in-out ${i * 0.9}s infinite`,
             }}
           />
         ))}

@@ -70,17 +70,28 @@ export default function HowItsMade() {
       ref={ref}
       className="relative py-40 sm:py-52 px-6 overflow-hidden section-gradient-warm"
     >
-      <div className="absolute inset-0 grid-bg opacity-15" />
+      <div className="absolute inset-0 grid-bg opacity-25" />
 
       <div
         className="orb"
         style={{
-          width: 800,
-          height: 800,
+          width: 900,
+          height: 900,
           background:
-            "radial-gradient(circle, rgba(155,145,120,0.05), transparent 60%)",
-          top: "20%",
+            "radial-gradient(circle, rgba(155,145,120,0.08), transparent 60%)",
+          top: "10%",
           right: "-15%",
+        }}
+      />
+      <div
+        className="orb"
+        style={{
+          width: 600,
+          height: 600,
+          background:
+            "radial-gradient(circle, rgba(155,145,120,0.06), transparent 60%)",
+          bottom: "5%",
+          left: "-8%",
         }}
       />
 
@@ -90,62 +101,156 @@ export default function HowItsMade() {
         <div
           className="absolute top-[15%] right-[-8%] rounded-full"
           style={{
-            width: 500,
-            height: 500,
-            border: "1px dashed rgba(155,145,120,0.06)",
-            animation: "orbitalSpin 40s linear infinite",
+            width: 600,
+            height: 600,
+            border: "1px dashed rgba(155,145,120,0.12)",
+            animation: "orbitalSpin 35s linear infinite",
           }}
-        />
+        >
+          {/* Tick marks on ring */}
+          {[0, 45, 90, 135, 180, 225, 270, 315].map((deg) => (
+            <div
+              key={deg}
+              className="absolute top-1/2 left-1/2 w-2 h-0.5 rounded-full"
+              style={{
+                background: "rgba(155,145,120,0.2)",
+                transform: `rotate(${deg}deg) translateX(300px)`,
+                transformOrigin: "0 0",
+              }}
+            />
+          ))}
+        </div>
         {/* Medium gear ring — counter-clockwise */}
         <div
           className="absolute bottom-[10%] left-[-5%] rounded-full"
           style={{
-            width: 350,
-            height: 350,
-            border: "1px dashed rgba(155,145,120,0.05)",
-            animation: "orbitalSpinReverse 30s linear infinite",
+            width: 450,
+            height: 450,
+            border: "1px dashed rgba(155,145,120,0.1)",
+            animation: "orbitalSpinReverse 25s linear infinite",
           }}
-        />
+        >
+          {[0, 60, 120, 180, 240, 300].map((deg) => (
+            <div
+              key={deg}
+              className="absolute top-1/2 left-1/2 w-1.5 h-0.5 rounded-full"
+              style={{
+                background: "rgba(155,145,120,0.18)",
+                transform: `rotate(${deg}deg) translateX(225px)`,
+                transformOrigin: "0 0",
+              }}
+            />
+          ))}
+        </div>
         {/* Small gear ring */}
         <div
           className="absolute top-[60%] right-[15%] rounded-full"
           style={{
-            width: 200,
-            height: 200,
-            border: "1px solid rgba(155,145,120,0.04)",
-            animation: "orbitalSpin 20s linear infinite",
+            width: 250,
+            height: 250,
+            border: "1px solid rgba(155,145,120,0.08)",
+            animation: "orbitalSpin 18s linear infinite",
+          }}
+        />
+        {/* Extra ring — top-left */}
+        <div
+          className="absolute top-[5%] left-[20%] rounded-full"
+          style={{
+            width: 180,
+            height: 180,
+            border: "1px dashed rgba(155,145,120,0.06)",
+            animation: "orbitalSpinReverse 22s linear infinite",
           }}
         />
       </div>
 
       {/* Animated blueprint measurement lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* Horizontal measurement line with animated endpoints */}
-        <div className="absolute top-[25%] left-[5%] right-[5%]">
-          <div className="h-px w-full" style={{ background: "linear-gradient(90deg, transparent, rgba(155,145,120,0.05) 20%, rgba(155,145,120,0.05) 80%, transparent)" }} />
-          <div className="absolute left-[10%] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(155,145,120,0.12)", animation: "pulseGlow 4s ease-in-out infinite" }} />
-          <div className="absolute right-[10%] top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "rgba(155,145,120,0.12)", animation: "pulseGlow 4s ease-in-out 2s infinite" }} />
-        </div>
-        <div className="absolute top-[75%] left-[8%] right-[8%]">
-          <div className="h-px w-full" style={{ background: "linear-gradient(90deg, transparent, rgba(155,145,120,0.04) 15%, rgba(155,145,120,0.04) 85%, transparent)" }} />
-        </div>
+        {/* Horizontal measurement lines with animated endpoints */}
+        {[25, 50, 75].map((top, i) => (
+          <div key={i} className="absolute left-[5%] right-[5%]" style={{ top: `${top}%` }}>
+            <div className="h-px w-full" style={{ background: `linear-gradient(90deg, transparent, rgba(155,145,120,${0.08 - i * 0.02}) 20%, rgba(155,145,120,${0.08 - i * 0.02}) 80%, transparent)` }} />
+            {/* Sweeping measurement beam */}
+            <div
+              className="absolute h-px"
+              style={{
+                width: 100,
+                background: "linear-gradient(90deg, transparent, rgba(155,145,120,0.3), transparent)",
+                animation: `sweepBeam ${10 + i * 3}s linear ${i * 2}s infinite`,
+              }}
+            />
+            <div className="absolute left-[10%] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full" style={{ background: "rgba(155,145,120,0.2)", animation: `pulseGlow 3s ease-in-out ${i}s infinite` }} />
+            <div className="absolute right-[10%] top-1/2 -translate-y-1/2 w-2 h-2 rounded-full" style={{ background: "rgba(155,145,120,0.2)", animation: `pulseGlow 3s ease-in-out ${i + 1.5}s infinite` }} />
+            {/* Dimension label marks */}
+            <div className="absolute left-[10%] -top-1 w-px h-2" style={{ background: "rgba(155,145,120,0.15)" }} />
+            <div className="absolute right-[10%] -top-1 w-px h-2" style={{ background: "rgba(155,145,120,0.15)" }} />
+          </div>
+        ))}
 
         {/* Vertical measurement lines */}
-        <div className="absolute left-[18%] top-[10%] bottom-[10%] w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(155,145,120,0.04) 20%, rgba(155,145,120,0.04) 80%, transparent)" }} />
-        <div className="absolute right-[18%] top-[10%] bottom-[10%] w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(155,145,120,0.03) 30%, rgba(155,145,120,0.03) 70%, transparent)" }} />
+        {[18, 40, 65, 82].map((left, i) => (
+          <div key={i} className="absolute top-[10%] bottom-[10%]" style={{ left: `${left}%` }}>
+            <div className="w-px h-full" style={{ background: `linear-gradient(180deg, transparent, rgba(155,145,120,${0.06 - i * 0.01}) 20%, rgba(155,145,120,${0.06 - i * 0.01}) 80%, transparent)` }} />
+            {/* Rising measurement pulse */}
+            <div
+              className="absolute w-px"
+              style={{
+                height: 80,
+                background: "linear-gradient(180deg, transparent, rgba(155,145,120,0.25), transparent)",
+                animation: `dataPulse ${6 + i * 2}s ease-in-out ${i * 1.5}s infinite`,
+              }}
+            />
+          </div>
+        ))}
       </div>
 
-      {/* Expanding wave pulses from center */}
+      {/* Expanding wave pulses from gear centers */}
       <div className="absolute inset-0 pointer-events-none">
-        {[1, 2, 3].map((i) => (
+        {/* From right gear */}
+        {[1, 2, 3, 4].map((i) => (
           <div
-            key={i}
-            className="absolute top-[40%] left-[70%] rounded-full"
+            key={`r-${i}`}
+            className="absolute top-[15%] right-[-8%] rounded-full"
             style={{
               width: 300,
               height: 300,
-              border: "1px solid rgba(155,145,120,0.06)",
+              border: "1px solid rgba(155,145,120,0.1)",
+              animation: `waveExpand ${5 + i * 1.5}s ease-out ${i * 1.5}s infinite`,
+            }}
+          />
+        ))}
+        {/* From left gear */}
+        {[1, 2, 3].map((i) => (
+          <div
+            key={`l-${i}`}
+            className="absolute bottom-[10%] left-[-5%] rounded-full"
+            style={{
+              width: 250,
+              height: 250,
+              border: "1px solid rgba(155,145,120,0.08)",
               animation: `waveExpand ${6 + i * 2}s ease-out ${i * 2}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Floating engineering particles */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 10, y: 30 }, { x: 30, y: 60 }, { x: 50, y: 20 },
+          { x: 70, y: 75 }, { x: 85, y: 40 }, { x: 20, y: 90 },
+          { x: 60, y: 50 }, { x: 90, y: 15 }, { x: 45, y: 85 },
+          { x: 15, y: 55 },
+        ].map((pos, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 rounded-full"
+            style={{
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              background: `rgba(155,145,120,${0.15 + (i % 4) * 0.06})`,
+              boxShadow: `0 0 8px 2px rgba(155,145,120,0.06)`,
+              animation: `particleFloat ${6 + i * 1.5}s ease-in-out ${i * 0.8}s infinite`,
             }}
           />
         ))}

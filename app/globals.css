@@ -216,9 +216,16 @@ body {
 
 @keyframes dataPulse {
   0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
   100% { transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes dataPulseDown {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(100%); opacity: 0; }
 }
 
 @keyframes orbitalSpin {
@@ -232,31 +239,91 @@ body {
 }
 
 @keyframes waveExpand {
-  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0.15; }
-  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+  0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0.25; }
+  100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
 }
 
 @keyframes crosshairPulse {
-  0%, 100% { opacity: 0.15; }
-  50% { opacity: 0.4; }
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.6; }
 }
 
 @keyframes shieldWave {
-  0% { transform: scaleX(0); opacity: 0.4; }
-  50% { transform: scaleX(1); opacity: 0.08; }
+  0% { transform: scaleX(0); opacity: 0.5; }
+  50% { transform: scaleX(1); opacity: 0.15; }
   100% { transform: scaleX(0); opacity: 0; }
 }
 
 @keyframes binaryRain {
   0% { transform: translateY(-10%); opacity: 0; }
-  10% { opacity: 0.3; }
-  90% { opacity: 0.3; }
+  10% { opacity: 0.5; }
+  90% { opacity: 0.5; }
   100% { transform: translateY(110%); opacity: 0; }
 }
 
 @keyframes tickerProgress {
   0% { width: 0%; }
   100% { width: 100%; }
+}
+
+@keyframes scanHorizontal {
+  0% { transform: translateX(-100%); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateX(200%); opacity: 0; }
+}
+
+@keyframes floatDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  25% { transform: translate(30px, -20px) scale(1.1); opacity: 0.6; }
+  50% { transform: translate(-15px, -40px) scale(0.95); opacity: 0.4; }
+  75% { transform: translate(20px, -10px) scale(1.05); opacity: 0.5; }
+}
+
+@keyframes gridFlicker {
+  0%, 100% { opacity: 0.04; }
+  10% { opacity: 0.1; }
+  12% { opacity: 0.04; }
+  50% { opacity: 0.06; }
+  52% { opacity: 0.12; }
+  54% { opacity: 0.04; }
+}
+
+@keyframes energyArc {
+  0% { stroke-dashoffset: 600; opacity: 0; }
+  10% { opacity: 0.6; }
+  50% { opacity: 0.3; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 0.6; }
+  80% { opacity: 0.6; }
+  100% { transform: translateY(-200px) translateX(40px); opacity: 0; }
+}
+
+@keyframes rotateCompass {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes scanVertical {
+  0% { transform: translateY(-100%); opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes warningBlink {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes progressFill {
+  0% { transform: scaleX(0); }
+  80% { transform: scaleX(1); }
+  100% { transform: scaleX(1); opacity: 0; }
 }
 
 .animate-float { animation: float 6s ease-in-out infinite; }
@@ -275,19 +342,19 @@ body {
 /* Section gradient backgrounds */
 
 .section-gradient-green {
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(90,138,112,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(90,138,112,0.1) 0%, transparent 70%);
 }
 .section-gradient-steel {
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(122,139,165,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(122,139,165,0.1) 0%, transparent 70%);
 }
 .section-gradient-warm {
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(155,145,120,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(155,145,120,0.1) 0%, transparent 70%);
 }
 .section-gradient-rose {
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(165,112,110,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(165,112,110,0.1) 0%, transparent 70%);
 }
 .section-gradient-mauve {
-  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(138,129,158,0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(138,129,158,0.1) 0%, transparent 70%);
 }
 
 /* Glow accents */

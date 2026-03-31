@@ -64,33 +64,44 @@ export default function SystemArchitecture() {
       ref={ref}
       className="relative py-40 sm:py-52 px-6 overflow-hidden section-gradient-mauve"
     >
-      <div className="absolute inset-0 grid-bg opacity-15" />
+      <div className="absolute inset-0 grid-bg opacity-25" />
 
       <div
         className="orb"
         style={{
-          width: 900,
-          height: 900,
+          width: 1000,
+          height: 1000,
           background:
-            "radial-gradient(circle, rgba(138,129,158,0.05), transparent 60%)",
+            "radial-gradient(circle, rgba(138,129,158,0.08), transparent 60%)",
           top: "5%",
           left: "-10%",
+        }}
+      />
+      <div
+        className="orb"
+        style={{
+          width: 700,
+          height: 700,
+          background:
+            "radial-gradient(circle, rgba(138,129,158,0.06), transparent 60%)",
+          bottom: "0%",
+          right: "-10%",
         }}
       />
 
       {/* Animated binary rain columns */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[8, 22, 38, 52, 67, 78, 92].map((left, i) => (
+        {[5, 12, 22, 32, 42, 52, 60, 67, 75, 82, 90, 96].map((left, i) => (
           <div
             key={i}
-            className="absolute top-0 flex flex-col gap-3 font-mono text-[8px]"
+            className="absolute top-0 flex flex-col gap-2 font-mono text-[9px]"
             style={{
               left: `${left}%`,
-              animation: `binaryRain ${8 + i * 1.5}s linear ${i * 1.2}s infinite`,
-              color: `rgba(138,129,158,${0.08 + (i % 3) * 0.03})`,
+              animation: `binaryRain ${5 + i * 1}s linear ${i * 0.7}s infinite`,
+              color: `rgba(138,129,158,${0.12 + (i % 3) * 0.06})`,
             }}
           >
-            {Array.from({ length: 30 }, (_, j) => (
+            {Array.from({ length: 40 }, (_, j) => (
               <span key={j}>{((i * 7 + j * 13) % 2)}</span>
             ))}
           </div>
@@ -101,53 +112,111 @@ export default function SystemArchitecture() {
       <div className="absolute inset-0 pointer-events-none">
         {/* Center nexus */}
         <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full"
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full"
           style={{
-            background: "rgba(138,129,158,0.2)",
-            boxShadow: "0 0 20px 5px rgba(138,129,158,0.05)",
+            background: "rgba(138,129,158,0.35)",
+            boxShadow: "0 0 40px 10px rgba(138,129,158,0.1)",
+            animation: "pulseGlow 3s ease-in-out infinite",
           }}
         />
         {/* Orbital rings */}
-        {[200, 350, 500].map((size, i) => (
+        {[180, 300, 450, 620].map((size, i) => (
           <div
             key={i}
             className="absolute top-1/2 left-1/2 rounded-full"
             style={{
               width: size,
               height: size,
-              border: `1px solid rgba(138,129,158,${0.05 - i * 0.01})`,
-              animation: `${i % 2 === 0 ? "orbitalSpin" : "orbitalSpinReverse"} ${25 + i * 10}s linear infinite`,
+              border: `1px solid rgba(138,129,158,${0.1 - i * 0.015})`,
+              animation: `${i % 2 === 0 ? "orbitalSpin" : "orbitalSpinReverse"} ${18 + i * 8}s linear infinite`,
             }}
           >
             {/* Orbiting node */}
             <div
-              className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-1 rounded-full"
+              className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full"
               style={{
-                background: `rgba(138,129,158,${0.3 - i * 0.05})`,
-                boxShadow: `0 0 6px 1px rgba(138,129,158,${0.15 - i * 0.03})`,
+                width: 4 - i * 0.5,
+                height: 4 - i * 0.5,
+                background: `rgba(138,129,158,${0.5 - i * 0.08})`,
+                boxShadow: `0 0 10px 3px rgba(138,129,158,${0.2 - i * 0.03})`,
+              }}
+            />
+            {/* Second orbiting node on opposite side */}
+            {i < 3 && (
+              <div
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 rounded-full"
+                style={{
+                  width: 3,
+                  height: 3,
+                  background: `rgba(138,129,158,${0.3 - i * 0.05})`,
+                  boxShadow: `0 0 8px 2px rgba(138,129,158,${0.1})`,
+                }}
+              />
+            )}
+          </div>
+        ))}
+      </div>
+
+      {/* Horizontal data bus lines with sweeping beams */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[12, 28, 45, 62, 78, 90].map((top, i) => (
+          <div
+            key={i}
+            className="absolute left-0 w-full"
+            style={{ top: `${top}%`, height: 1, background: `linear-gradient(90deg, transparent, rgba(138,129,158,${0.06 - (i % 2) * 0.02}) 20%, rgba(138,129,158,${0.06 - (i % 2) * 0.02}) 80%, transparent)` }}
+          >
+            <div
+              className="absolute h-full"
+              style={{
+                width: 200,
+                background: "linear-gradient(90deg, transparent, rgba(138,129,158,0.25), transparent)",
+                animation: `sweepBeam ${7 + i * 1.5}s linear ${i * 1.3}s infinite`,
               }}
             />
           </div>
         ))}
       </div>
 
-      {/* Horizontal data bus lines */}
+      {/* Data stream particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[20, 45, 70].map((top, i) => (
+        {[
+          { x: 15, y: 25 }, { x: 35, y: 55 }, { x: 55, y: 15 },
+          { x: 72, y: 70 }, { x: 88, y: 35 }, { x: 28, y: 80 },
+          { x: 65, y: 45 }, { x: 8, y: 65 }, { x: 48, y: 88 },
+          { x: 80, y: 20 }, { x: 42, y: 38 }, { x: 92, y: 55 },
+        ].map((pos, i) => (
           <div
             key={i}
-            className="absolute left-0 w-full"
-            style={{ top: `${top}%`, height: 1, background: "linear-gradient(90deg, transparent, rgba(138,129,158,0.03) 20%, rgba(138,129,158,0.03) 80%, transparent)" }}
-          >
-            <div
-              className="absolute h-full"
-              style={{
-                width: 100,
-                background: "linear-gradient(90deg, transparent, rgba(138,129,158,0.12), transparent)",
-                animation: `sweepBeam ${10 + i * 3}s linear ${i * 2}s infinite`,
-              }}
-            />
-          </div>
+            className="absolute w-1 h-1 rounded-full"
+            style={{
+              left: `${pos.x}%`,
+              top: `${pos.y}%`,
+              background: `rgba(138,129,158,${0.2 + (i % 3) * 0.08})`,
+              boxShadow: `0 0 6px 2px rgba(138,129,158,0.08)`,
+              animation: `floatDrift ${7 + i * 1.3}s ease-in-out ${i * 0.9}s infinite`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Hexagonal grid flicker overlay */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {[
+          { x: 10, y: 10, s: 120 }, { x: 60, y: 20, s: 100 }, { x: 30, y: 70, s: 140 },
+          { x: 80, y: 60, s: 90 }, { x: 45, y: 40, s: 110 },
+        ].map((hex, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full"
+            style={{
+              left: `${hex.x}%`,
+              top: `${hex.y}%`,
+              width: hex.s,
+              height: hex.s,
+              border: "1px solid rgba(138,129,158,0.06)",
+              animation: `gridFlicker ${4 + i * 1.5}s ease-in-out ${i * 1.2}s infinite`,
+            }}
+          />
         ))}
       </div>
 
