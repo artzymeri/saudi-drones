@@ -215,20 +215,52 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
         {/* ── PROGRAMME BRANDING ── */}
 
-        {/* Saudi Emblem */}
+        {/* Saudi Emblem flanked by Ministry of Defence & Vision 2030 */}
         <motion.div
           initial={{ opacity: 0, scale: 0.7 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-10 mt-8"
+          className="mb-10 mt-8 flex items-center gap-8 sm:gap-12"
         >
+          {/* Ministry of Defence — left */}
+          <div className="flex flex-col items-center gap-2">
+            <Image
+              src="/saudi_ministry_of_defence.svg"
+              alt="Ministry of Defence"
+              width={48}
+              height={48}
+              className="opacity-60 invert"
+              style={{ width: "auto", height: "auto", maxWidth: 48, maxHeight: 48 }}
+            />
+          </div>
+
+          {/* Divider */}
+          <div className="h-14 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.12), transparent)" }} />
+
+          {/* Central Emblem */}
           <Image
             src="/saudi_emblem.png"
             alt="Saudi Emblem"
-            width={64}
-            height={64}
-            className="opacity-70 drop-shadow-[0_0_30px_rgba(168,148,112,0.2)]"
+            width={80}
+            height={88}
+            className="opacity-85 drop-shadow-[0_0_30px_rgba(168,148,112,0.25)]"
+            style={{ width: "auto", height: "auto", maxWidth: 80, maxHeight: 88 }}
           />
+
+          {/* Divider */}
+          <div className="h-14 w-px" style={{ background: "linear-gradient(180deg, transparent, rgba(255,255,255,0.12), transparent)" }} />
+
+          {/* Vision 2030 — right */}
+          <div className="flex flex-col items-center gap-2">
+            <Image
+              src="/saudi_vision_2030.png"
+              alt="Vision 2030"
+              width={52}
+              height={52}
+              className="opacity-60"
+              style={{ width: "auto", height: "auto", maxWidth: 52, maxHeight: 52 }}
+            />
+          </div>
         </motion.div>
 
         {/* Arabic text */}
@@ -315,35 +347,11 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[clamp(0.6rem,1.5vw,0.85rem)] tracking-[0.45em] uppercase font-light mb-6"
+          className="text-[clamp(0.6rem,1.5vw,0.85rem)] tracking-[0.45em] uppercase font-light mb-16"
           style={{ color: "rgba(168,148,112,0.45)" }}
         >
           Sovereign. &nbsp;Advanced. &nbsp;Local.
         </motion.p>
-
-        {/* Logos row */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-6 mb-16"
-        >
-          <Image
-            src="/saudi_ministry_of_defence.svg"
-            alt="Ministry of Defence"
-            width={36}
-            height={36}
-            className="opacity-30 invert"
-          />
-          <div className="h-6 w-px bg-[var(--border)]" />
-          <Image
-            src="/saudi_vision_2030.png"
-            alt="Vision 2030"
-            width={36}
-            height={36}
-            className="opacity-30"
-          />
-        </motion.div>
 
         {/* ── DRONE SHOWCASE ── */}
         <motion.div
@@ -518,7 +526,7 @@ export default function Hero() {
                     <h4 className="text-sm sm:text-[15px] font-medium tracking-wide uppercase text-white/75 mb-1.5" style={{ color: "rgba(168,148,112,0.8)" }}>
                       {pillar.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                    <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed font-light">
                       {pillar.desc}
                     </p>
                   </div>

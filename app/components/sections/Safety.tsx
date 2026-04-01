@@ -292,7 +292,7 @@ export default function Safety() {
             Safety Protocol
           </span>
         </div>
-        <h2 className="reveal delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
+        <h2 className="reveal delay-1 text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
           Three Layers
           <br />
           <span className="text-[var(--text-muted)]">Deep</span>
@@ -305,7 +305,7 @@ export default function Safety() {
                 "linear-gradient(90deg, var(--accent-rose), transparent)",
             }}
           />
-          <p className="text-[var(--text-secondary)] text-lg max-w-md leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-xl max-w-md leading-relaxed">
             Cascading fail-safes ensure no single point of failure can
             compromise mission safety.
           </p>
@@ -342,12 +342,12 @@ export default function Safety() {
 
                 <div className="pt-4">
                   <span
-                    className="text-[10px] tracking-[0.3em] uppercase font-mono block mb-2"
+                    className="text-[14px] tracking-[0.3em] uppercase font-mono block mb-2"
                     style={{ color: level.color }}
                   >
                     Level {level.number} — {level.subtitle}
                   </span>
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-extralight text-white/90 tracking-tight">
+                  <h3 className="text-3xl sm:text-4xl md:text-5xl font-extralight text-white/90 tracking-tight">
                     {level.title}
                   </h3>
                 </div>
@@ -365,7 +365,7 @@ export default function Safety() {
                         className="mt-2.5 flex-shrink-0 w-1 h-1 rounded-full opacity-60"
                         style={{ background: level.color }}
                       />
-                      <p className="text-sm sm:text-[15px] text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text)] transition-colors duration-300">
+                      <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text)] transition-colors duration-300">
                         {item}
                       </p>
                     </div>

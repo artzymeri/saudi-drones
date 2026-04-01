@@ -268,7 +268,7 @@ export default function Payloads() {
             Payloads &amp; Explosives
           </span>
         </div>
-        <h2 className="reveal delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
+        <h2 className="reveal delay-1 text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
           Mission
           <br />
           <span className="text-[var(--text-muted)]">Versatility</span>
@@ -281,7 +281,7 @@ export default function Payloads() {
                 "linear-gradient(90deg, var(--accent-rose), transparent)",
             }}
           />
-          <p className="text-[var(--text-secondary)] text-lg max-w-md leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-xl max-w-md leading-relaxed">
             Four interchangeable payload modules covering lethal, non-lethal,
             and electronic warfare scenarios.
           </p>
@@ -314,14 +314,14 @@ export default function Payloads() {
                 {/* Content */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-3 mb-1.5">
-                    <h4 className="text-lg sm:text-xl font-light text-white/85 group-hover:text-white transition-colors">
+                    <h4 className="text-xl sm:text-2xl font-light text-white/85 group-hover:text-white transition-colors">
                       {p.title}
                     </h4>
-                    <span className="text-[10px] font-mono text-[var(--text-muted)] tracking-wider">
+                    <span className="text-[14px] font-mono text-[var(--text-muted)] tracking-wider">
                       {p.weight}
                     </span>
                   </div>
-                  <p className="text-sm text-[var(--text-muted)] leading-relaxed max-w-lg group-hover:text-[var(--text-secondary)] transition-colors duration-300">
+                  <p className="text-base text-[var(--text-muted)] leading-relaxed max-w-lg group-hover:text-[var(--text-secondary)] transition-colors duration-300">
                     {p.desc}
                   </p>
                 </div>
@@ -344,13 +344,13 @@ export default function Payloads() {
             className="w-8 h-px"
             style={{ background: "var(--accent-rose)" }}
           />
-          <h3 className="text-[11px] tracking-[0.3em] uppercase text-[var(--accent-rose)]">
+          <h3 className="text-[15px] tracking-[0.3em] uppercase text-[var(--accent-rose)]">
             Explosive Compound Comparison
           </h3>
         </div>
 
         <div className="reveal-scale overflow-hidden rounded-2xl border border-[var(--border)]">
-          <table className="w-full text-sm">
+          <table className="w-full text-base">
             <thead>
               <tr
                 style={{
@@ -360,7 +360,7 @@ export default function Payloads() {
                 {COMPARISON.headers.map((h) => (
                   <th
                     key={h}
-                    className="text-left px-6 sm:px-8 py-5 text-[10px] tracking-[0.25em] uppercase text-[var(--text-muted)] font-medium"
+                    className="text-left px-6 sm:px-8 py-5 text-[14px] tracking-[0.25em] uppercase text-[var(--text-muted)] font-medium"
                   >
                     {h}
                   </th>
@@ -376,10 +376,10 @@ export default function Payloads() {
                   <td className="px-6 sm:px-8 py-4 text-[var(--text-secondary)]">
                     {row[0]}
                   </td>
-                  <td className="px-6 sm:px-8 py-4 font-mono text-xs text-[var(--text-muted)]">
+                  <td className="px-6 sm:px-8 py-4 font-mono text-base text-[var(--text-muted)]">
                     {row[1]}
                   </td>
-                  <td className="px-6 sm:px-8 py-4 font-mono text-xs text-[var(--text-muted)]">
+                  <td className="px-6 sm:px-8 py-4 font-mono text-base text-[var(--text-muted)]">
                     {row[2]}
                   </td>
                 </tr>

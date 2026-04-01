@@ -263,7 +263,7 @@ export default function Timeline() {
             Production Timeline
           </span>
         </div>
-        <h2 className="reveal delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
+        <h2 className="reveal delay-1 text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
           ~8 Weeks to
           <br />
           <span className="text-[var(--text-muted)]">First Flight</span>
@@ -276,7 +276,7 @@ export default function Timeline() {
                 "linear-gradient(90deg, var(--accent), transparent)",
             }}
           />
-          <p className="text-[var(--text-secondary)] text-lg max-w-md leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-xl max-w-md leading-relaxed">
             From raw materials to production-ready units in a rapid sprint
             cycle.
           </p>
@@ -322,12 +322,12 @@ export default function Timeline() {
             >
               <div className="px-6 py-2">
                 {/* Week range */}
-                <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--accent)] font-mono block mb-3">
+                <span className="text-[14px] tracking-[0.3em] uppercase text-[var(--accent)] font-mono block mb-3">
                   {week.range}
                 </span>
 
                 {/* Phase title */}
-                <h4 className="text-xl sm:text-2xl font-extralight text-white/85 tracking-tight mb-6">
+                <h4 className="text-2xl sm:text-3xl font-extralight text-white/85 tracking-tight mb-6">
                   {week.title}
                 </h4>
 
@@ -342,7 +342,7 @@ export default function Timeline() {
                           opacity: 0.4,
                         }}
                       />
-                      <p className="text-xs text-[var(--text-muted)] leading-relaxed">
+                      <p className="text-base text-[var(--text-muted)] leading-relaxed">
                         {item}
                       </p>
                     </div>
@@ -391,10 +391,10 @@ export default function Timeline() {
                 />
               </div>
               <div>
-                <span className="text-[10px] tracking-[0.3em] uppercase text-[var(--accent-warm)] font-mono block mb-2">
+                <span className="text-[14px] tracking-[0.3em] uppercase text-[var(--accent-warm)] font-mono block mb-2">
                   Vision 2030
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-extralight text-white/90 tracking-tight">
+                <h3 className="text-3xl sm:text-4xl font-extralight text-white/90 tracking-tight">
                   State Assistance Required
                 </h3>
               </div>
@@ -408,7 +408,7 @@ export default function Timeline() {
                       className="mt-2.5 flex-shrink-0 w-1 h-1 rounded-full opacity-60"
                       style={{ background: "var(--accent-warm)" }}
                     />
-                    <p className="text-sm sm:text-[15px] text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text)] transition-colors duration-300">
+                    <p className="text-base sm:text-lg text-[var(--text-secondary)] leading-relaxed group-hover:text-[var(--text)] transition-colors duration-300">
                       {item}
                     </p>
                   </div>
@@ -430,8 +430,8 @@ export default function Timeline() {
               src="/saudi_emblem.png"
               alt="Saudi Emblem"
               width={36}
-              height={36}
-              className="opacity-30"
+              height={40}
+              className="opacity-30 brightness-0 invert"
             />
             <div className="h-6 w-px bg-[var(--border)]" />
             <Image
@@ -451,10 +451,10 @@ export default function Timeline() {
             />
           </div>
 
-          <p className="reveal delay-1 text-[11px] tracking-[0.25em] uppercase text-[var(--text-muted)] mb-2">
+          <p className="reveal delay-1 text-[15px] tracking-[0.25em] uppercase text-[var(--text-muted)] mb-2">
             Saudi Ministry of Defence
           </p>
-          <p className="reveal delay-2 text-[10px] tracking-[0.2em] uppercase text-[var(--text-muted)] opacity-40">
+          <p className="reveal delay-2 text-[14px] tracking-[0.2em] uppercase text-[var(--text-muted)] opacity-40">
             Classified — Internal Use Only
           </p>
         </div>

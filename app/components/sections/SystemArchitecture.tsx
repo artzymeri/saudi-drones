@@ -231,7 +231,7 @@ export default function SystemArchitecture() {
             System Architecture
           </span>
         </div>
-        <h2 className="reveal delay-1 text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
+        <h2 className="reveal delay-1 text-6xl sm:text-7xl md:text-8xl lg:text-[7rem] font-extralight tracking-[-0.02em] text-white/90 leading-[0.95] mb-6">
           Under
           <br />
           <span className="text-[var(--text-muted)]">The Hood</span>
@@ -244,7 +244,7 @@ export default function SystemArchitecture() {
                 "linear-gradient(90deg, var(--accent-mauve), transparent)",
             }}
           />
-          <p className="text-[var(--text-secondary)] text-lg max-w-md leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-xl max-w-md leading-relaxed">
             Detailed specifications of every software module and hardware
             component powering the platform.
           </p>
@@ -264,14 +264,14 @@ export default function SystemArchitecture() {
               }}
             >
               <div className="flex items-baseline gap-1.5 mb-3">
-                <span className="text-4xl sm:text-5xl md:text-6xl font-extralight text-white/85 tracking-tight metric-value">
+                <span className="text-5xl sm:text-6xl md:text-7xl font-extralight text-white/85 tracking-tight metric-value">
                   {m.value}
                 </span>
-                <span className="text-sm sm:text-base text-[var(--text-muted)] font-light">
+                <span className="text-base sm:text-lg text-[var(--text-muted)] font-light">
                   {m.unit}
                 </span>
               </div>
-              <span className="text-[9px] tracking-[0.3em] uppercase text-[var(--text-muted)]">
+              <span className="text-[12px] tracking-[0.3em] uppercase text-[var(--text-muted)]">
                 {m.label}
               </span>
             </div>
@@ -295,7 +295,7 @@ export default function SystemArchitecture() {
               className="w-8 h-px"
               style={{ background: "var(--accent-steel)" }}
             />
-            <h3 className="text-[11px] tracking-[0.3em] uppercase text-[var(--accent-steel)]">
+            <h3 className="text-[15px] tracking-[0.3em] uppercase text-[var(--accent-steel)]">
               Software Modules
             </h3>
           </div>
@@ -320,10 +320,10 @@ export default function SystemArchitecture() {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-sm text-white/80 block group-hover:text-white transition-colors">
+                      <span className="text-base text-white/80 block group-hover:text-white transition-colors">
                         {item.label}
                       </span>
-                      <span className="text-xs text-[var(--text-muted)] font-mono">
+                      <span className="text-base text-[var(--text-muted)] font-mono">
                         {item.detail}
                       </span>
                     </div>
@@ -341,7 +341,7 @@ export default function SystemArchitecture() {
               className="w-8 h-px"
               style={{ background: "var(--accent)" }}
             />
-            <h3 className="text-[11px] tracking-[0.3em] uppercase text-[var(--accent)]">
+            <h3 className="text-[15px] tracking-[0.3em] uppercase text-[var(--accent)]">
               Hardware Components
             </h3>
           </div>
@@ -366,10 +366,10 @@ export default function SystemArchitecture() {
                       />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <span className="text-sm text-white/80 block group-hover:text-white transition-colors">
+                      <span className="text-base text-white/80 block group-hover:text-white transition-colors">
                         {item.label}
                       </span>
-                      <span className="text-xs text-[var(--text-muted)] font-mono">
+                      <span className="text-base text-[var(--text-muted)] font-mono">
                         {item.spec}
                       </span>
                     </div>

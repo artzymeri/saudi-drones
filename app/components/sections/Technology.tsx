@@ -220,7 +220,7 @@ export default function Technology() {
                 "linear-gradient(90deg, var(--accent-steel), transparent)",
             }}
           />
-          <p className="text-[var(--text-secondary)] text-lg max-w-md leading-relaxed">
+          <p className="text-[var(--text-secondary)] text-xl max-w-md leading-relaxed">
             A dual-stack architecture combining custom software intelligence with
             purpose-built hardware — every layer Saudi-engineered.
           </p>
@@ -231,7 +231,7 @@ export default function Technology() {
       <div className="max-w-7xl mx-auto mb-28">
         <div className="reveal flex items-center gap-4 mb-12">
           <div className="w-8 h-px" style={{ background: "var(--accent-steel)" }} />
-          <h3 className="text-[11px] tracking-[0.3em] uppercase text-[var(--accent-steel)]">
+          <h3 className="text-[15px] tracking-[0.3em] uppercase text-[var(--accent-steel)]">
             Software Stack
           </h3>
         </div>
@@ -246,7 +246,7 @@ export default function Technology() {
               >
                 <div className="flex items-center gap-6 sm:gap-10 py-6 sm:py-8 border-b border-[var(--border)] hover:border-[var(--border-hover)] transition-all duration-500 cursor-default">
                   {/* Number */}
-                  <span className="text-[10px] font-mono text-[var(--text-muted)] w-6 flex-shrink-0">
+                  <span className="text-[14px] font-mono text-[var(--text-muted)] w-6 flex-shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
@@ -264,16 +264,16 @@ export default function Technology() {
 
                   {/* Title & desc */}
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-base sm:text-lg font-light text-white/85 group-hover:text-white transition-colors">
+                    <h4 className="text-lg sm:text-xl font-light text-white/85 group-hover:text-white transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1 leading-relaxed">
+                    <p className="text-base sm:text-lg text-[var(--text-muted)] mt-1 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
 
                   {/* Spec tag */}
-                  <span className="hidden sm:block text-[10px] font-mono tracking-wider text-[var(--text-muted)] px-3 py-1.5 rounded-full border border-[var(--border)]">
+                  <span className="hidden sm:block text-[14px] font-mono tracking-wider text-[var(--text-muted)] px-3 py-1.5 rounded-full border border-[var(--border)]">
                     {item.spec}
                   </span>
                 </div>
@@ -287,7 +287,7 @@ export default function Technology() {
       <div className="max-w-7xl mx-auto">
         <div className="reveal flex items-center gap-4 mb-12">
           <div className="w-8 h-px" style={{ background: "var(--accent)" }} />
-          <h3 className="text-[11px] tracking-[0.3em] uppercase text-[var(--accent)]">
+          <h3 className="text-[15px] tracking-[0.3em] uppercase text-[var(--accent)]">
             Hardware Stack
           </h3>
         </div>
@@ -301,7 +301,7 @@ export default function Technology() {
                 className={`reveal delay-${Math.min(i + 1, 6)} group`}
               >
                 <div className="flex items-center gap-6 sm:gap-10 py-6 sm:py-8 border-b border-[var(--border)] hover:border-[var(--border-hover)] transition-all duration-500 cursor-default">
-                  <span className="text-[10px] font-mono text-[var(--text-muted)] w-6 flex-shrink-0">
+                  <span className="text-[14px] font-mono text-[var(--text-muted)] w-6 flex-shrink-0">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
@@ -317,15 +317,15 @@ export default function Technology() {
                   </div>
 
                   <div className="flex-1 min-w-0">
-                    <h4 className="text-base sm:text-lg font-light text-white/85 group-hover:text-white transition-colors">
+                    <h4 className="text-lg sm:text-xl font-light text-white/85 group-hover:text-white transition-colors">
                       {item.title}
                     </h4>
-                    <p className="text-xs sm:text-sm text-[var(--text-muted)] mt-1 leading-relaxed">
+                    <p className="text-base sm:text-lg text-[var(--text-muted)] mt-1 leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
 
-                  <span className="hidden sm:block text-[10px] font-mono tracking-wider text-[var(--text-muted)] px-3 py-1.5 rounded-full border border-[var(--border)]">
+                  <span className="hidden sm:block text-[14px] font-mono tracking-wider text-[var(--text-muted)] px-3 py-1.5 rounded-full border border-[var(--border)]">
                     {item.spec}
                   </span>
                 </div>

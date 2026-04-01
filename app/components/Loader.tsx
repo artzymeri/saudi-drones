@@ -421,9 +421,9 @@ export default function Loader({ onComplete }: { onComplete: () => void }) {
                   <Image
                     src="/saudi_emblem.png"
                     alt="Saudi Emblem"
-                    width={56}
-                    height={56}
-                    className="opacity-80 drop-shadow-[0_0_20px_rgba(90,138,112,0.3)]"
+                    width={64}
+                    height={70}
+                    className="opacity-90 brightness-0 invert drop-shadow-[0_0_25px_rgba(90,138,112,0.4)]"
                   />
                 </motion.div>
               </motion.div>
