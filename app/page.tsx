@@ -5,10 +5,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import Loader from "./components/Loader";
 import SectionNav from "./components/SectionNav";
 import Hero from "./components/sections/Hero";
-import Technology from "./components/sections/Technology";
+import UnderTheHood from "./components/sections/UnderTheHood";
+import MissionProfile from "./components/sections/MissionProfile";
 import HowItsMade from "./components/sections/HowItsMade";
-import SystemArchitecture from "./components/sections/SystemArchitecture";
 import Payloads from "./components/sections/Payloads";
+import BatterySources from "./components/sections/BatterySources";
 import Safety from "./components/sections/Safety";
 import Timeline from "./components/sections/Timeline";
 
@@ -34,10 +35,11 @@ export default function Home() {
 
             <main>
               <Hero />
-              <SystemArchitecture />
-              <Technology />
+              <UnderTheHood />
+              <MissionProfile />
               <HowItsMade />
               <Payloads />
+              <BatterySources />
               <Safety />
               <Timeline />
             </main>

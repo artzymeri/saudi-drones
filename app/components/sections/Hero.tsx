@@ -455,7 +455,7 @@ export default function Hero() {
             }}
           >
             <Image
-              src="/drone.png"
+              src="/drone_cutaway.png"
               alt="Interceptor Drone"
               width={400}
               height={400}
