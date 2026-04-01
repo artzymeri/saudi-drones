@@ -330,7 +330,7 @@ export default function UnderTheHood() {
                 }}
               >
                 <Image
-                  src="/drone-nika-itsmade-removebg-preview.png"
+                  src="/how-its-made-drone.png"
                   alt="Drone Internal Architecture — Cutaway View"
                   width={408}
                   height={612}
