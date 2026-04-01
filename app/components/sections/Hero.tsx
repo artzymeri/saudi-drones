@@ -1,9 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, useMemo } from "react";
+import { useEffect, useRef, useState, useMemo, Suspense } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ShieldCheck, Cog, MapPin } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const DroneModel = dynamic(() => import("../DroneModel"), { ssr: false });
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -355,8 +358,8 @@ export default function Hero() {
 
         {/* ── DRONE SHOWCASE ── */}
         <motion.div
-          initial={{ opacity: 0, y: 60, scale: 0.85 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1.6, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative mb-24 group"
         >
@@ -441,28 +444,20 @@ export default function Hero() {
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
 
-          {/* Drone image — floating + mouse parallax */}
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{
-              duration: 4.5,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            style={{
-              transform: `translate(${mousePos.x * 0.4}px, ${mousePos.y * 0.4}px)`,
-              transition: "transform 0.3s ease-out",
-            }}
+          {/* Drone 3D model — auto-rotating */}
+          <div
+            className="relative z-10 w-[500px] h-[400px] sm:w-[600px] sm:h-[450px]"
           >
-            <Image
-              src="/drone_cutaway.png"
-              alt="Interceptor Drone"
-              width={400}
-              height={400}
-              className="relative z-10 drop-shadow-[0_20px_60px_rgba(90,138,112,0.15)]"
-              priority
-            />
-          </motion.div>
+            <Suspense
+              fallback={
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-12 h-12 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
+                </div>
+              }
+            >
+              <DroneModel />
+            </Suspense>
+          </div>
         </motion.div>
 
         {/* A New Era of Sovereign Defence */}
