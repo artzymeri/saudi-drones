@@ -31,7 +31,7 @@ useGLTF.preload("/drone-3d.glb");
 export default function DroneModel() {
   return (
     <Canvas
-      camera={{ position: [0, 1.5, 7], fov: 10 }}
+      camera={{ position: [0, 1.5, 7], fov: 40 }}
       style={{ width: "100%", height: "100%" }}
       gl={{ antialias: true, alpha: true }}
     >
