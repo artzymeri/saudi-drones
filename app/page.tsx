@@ -34,9 +34,9 @@ export default function Home() {
 
             <main>
               <Hero />
+              <SystemArchitecture />
               <Technology />
               <HowItsMade />
-              <SystemArchitecture />
               <Payloads />
               <Safety />
               <Timeline />

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { ShieldCheck, Cog, MapPin } from "lucide-react";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -212,72 +213,63 @@ export default function Hero() {
 
       {/* ── MAIN CONTENT ── */}
       <div className="relative z-10 flex flex-col items-center text-center max-w-5xl mx-auto">
-        {/* Logos row */}
+        {/* ── PROGRAMME BRANDING ── */}
+
+        {/* Saudi Emblem */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-center gap-8 mb-14 mt-8"
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-10 mt-8"
         >
           <Image
             src="/saudi_emblem.png"
             alt="Saudi Emblem"
-            width={48}
-            height={48}
-            className="opacity-40"
-          />
-          <div className="h-8 w-px bg-[var(--border)]" />
-          <Image
-            src="/saudi_ministry_of_defence.svg"
-            alt="Ministry of Defence"
-            width={48}
-            height={48}
-            className="opacity-40 invert"
-          />
-          <div className="h-8 w-px bg-[var(--border)]" />
-          <Image
-            src="/saudi_vision_2030.png"
-            alt="Vision 2030"
-            width={48}
-            height={48}
-            className="opacity-40"
+            width={64}
+            height={64}
+            className="opacity-70 drop-shadow-[0_0_30px_rgba(168,148,112,0.2)]"
           />
         </motion.div>
 
-        {/* Badge */}
+        {/* Arabic text */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-8"
+          transition={{ duration: 1, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-center gap-1.5 mb-6"
         >
-          <span className="badge">
-            <motion.span
-              className="inline-block w-1.5 h-1.5 rounded-full"
-              style={{ background: "var(--accent)" }}
-              animate={{ opacity: [1, 0.4, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-            Production Storyboard
+          <span
+            className="text-[clamp(0.85rem,2.2vw,1.25rem)] font-light tracking-wide leading-relaxed"
+            style={{ color: "rgba(168,148,112,0.7)", direction: "rtl", fontFamily: "var(--font-geist-sans)" }}
+          >
+            برنامج المملكة العربية السعودية
+          </span>
+          <span
+            className="text-[clamp(0.8rem,2vw,1.15rem)] font-light tracking-wide leading-relaxed"
+            style={{ color: "rgba(168,148,112,0.55)", direction: "rtl", fontFamily: "var(--font-geist-sans)" }}
+          >
+            السيادي للدفاع ضد الطائرات غير المأهولة
           </span>
         </motion.div>
 
-        {/* Giant title with stagger */}
-        <div className="overflow-hidden mb-2">
+        {/* English title — SAUDI SOVEREIGN */}
+        <div className="overflow-hidden mb-1">
           <motion.h1
-            initial={{ y: 130 }}
+            initial={{ y: 80 }}
             animate={{ y: 0 }}
             transition={{
               duration: 1.2,
               delay: 0.7,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-[clamp(3rem,11vw,10rem)] font-extralight tracking-[-0.04em] leading-[0.85] text-white/90"
+            className="text-[clamp(1rem,3vw,1.6rem)] tracking-[0.35em] uppercase font-light text-white/50"
           >
-            Interceptor
+            Saudi Sovereign
           </motion.h1>
         </div>
-        <div className="overflow-hidden mb-8">
+
+        {/* COUNTER-UAS PROGRAMME — giant title */}
+        <div className="overflow-hidden mb-6">
           <motion.h1
             initial={{ y: 130 }}
             animate={{ y: 0 }}
@@ -286,9 +278,23 @@ export default function Hero() {
               delay: 0.85,
               ease: [0.16, 1, 0.3, 1],
             }}
-            className="text-[clamp(3rem,11vw,10rem)] font-extralight tracking-[-0.04em] leading-[0.85] text-[var(--text-muted)]"
+            className="text-[clamp(2rem,8vw,6.5rem)] font-extralight tracking-[-0.02em] leading-[0.9] text-white/90"
           >
-            Drone
+            Counter-UAS
+          </motion.h1>
+        </div>
+        <div className="overflow-hidden mb-8">
+          <motion.h1
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{
+              duration: 1.2,
+              delay: 0.95,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="text-[clamp(1.2rem,4vw,2.8rem)] tracking-[0.25em] uppercase font-light text-[var(--text-muted)]"
+          >
+            Programme
           </motion.h1>
         </div>
 
@@ -300,21 +306,44 @@ export default function Hero() {
           className="w-40 h-px mb-8 origin-center"
           style={{
             background:
-              "linear-gradient(90deg, transparent, var(--accent), transparent)",
+              "linear-gradient(90deg, transparent, rgba(168,148,112,0.5), transparent)",
           }}
         />
 
-        {/* Subtitle */}
+        {/* Tagline — SOVEREIGN. ADVANCED. LOCAL. */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.4, ease: [0.16, 1, 0.3, 1] }}
-          className="text-[var(--text-muted)] text-base sm:text-lg max-w-lg leading-relaxed mb-14"
+          className="text-[clamp(0.6rem,1.5vw,0.85rem)] tracking-[0.45em] uppercase font-light mb-6"
+          style={{ color: "rgba(168,148,112,0.45)" }}
         >
-          End-to-End Manufacturing — Software & Hardware
-          <br />
-          Designed, Built & Owned by Saudi Arabia
+          Sovereign. &nbsp;Advanced. &nbsp;Local.
         </motion.p>
+
+        {/* Logos row */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex items-center gap-6 mb-16"
+        >
+          <Image
+            src="/saudi_ministry_of_defence.svg"
+            alt="Ministry of Defence"
+            width={36}
+            height={36}
+            className="opacity-30 invert"
+          />
+          <div className="h-6 w-px bg-[var(--border)]" />
+          <Image
+            src="/saudi_vision_2030.png"
+            alt="Vision 2030"
+            width={36}
+            height={36}
+            className="opacity-30"
+          />
+        </motion.div>
 
         {/* ── DRONE SHOWCASE ── */}
         <motion.div
@@ -428,34 +457,75 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Dramatic stats */}
+        {/* A New Era of Sovereign Defence */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
-          className="flex items-stretch gap-0"
+          transition={{ duration: 1.2, delay: 2.0, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full max-w-2xl"
         >
-          {[
-            { value: "100%", label: "Saudi-Made" },
-            { value: "~8", label: "Weeks to Build" },
-            { value: "3", label: "Safety Levels" },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="flex flex-col items-center gap-3 px-8 sm:px-12"
-              style={{
-                borderLeft:
-                  i > 0 ? "1px solid rgba(255,255,255,0.05)" : "none",
-              }}
-            >
-              <span className="text-3xl sm:text-4xl md:text-5xl font-extralight text-white/80 tracking-tight metric-value">
-                {stat.value}
-              </span>
-              <span className="text-[9px] tracking-[0.25em] uppercase text-[var(--text-muted)]">
-                {stat.label}
-              </span>
-            </div>
-          ))}
+          {/* Section title */}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extralight tracking-[-0.01em] leading-[1.1] text-white/80 mb-10">
+            A New Era of{"\n"}
+            <span style={{ color: "rgba(168,148,112,0.7)" }}>Sovereign Defence</span>
+          </h2>
+
+          {/* Pillars */}
+          <div className="space-y-0">
+            {[
+              {
+                icon: ShieldCheck,
+                title: "Proven Concept, Sovereign Execution",
+                desc: "Inspired by battlefield success, engineered and built in Saudi Arabia.",
+              },
+              {
+                icon: Cog,
+                title: "Desert-Ready, Mission-Optimised",
+                desc: "Adapted for Saudi conditions and operational excellence.",
+              },
+              {
+                icon: MapPin,
+                title: "100% Saudi Industrialisation",
+                desc: "Designed, produced, and sustained by Saudi talent and industry.",
+              },
+            ].map((pillar, i) => {
+              const Icon = pillar.icon;
+              return (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 2.2 + i * 0.15, ease: [0.16, 1, 0.3, 1] }}
+                  className="group flex items-start gap-5 sm:gap-6 py-6 sm:py-7"
+                  style={{
+                    borderTop: "1px solid rgba(255,255,255,0.05)",
+                  }}
+                >
+                  <div
+                    className="flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center mt-0.5"
+                    style={{
+                      background: "rgba(90,138,112,0.06)",
+                      border: "1px solid rgba(90,138,112,0.12)",
+                    }}
+                  >
+                    <Icon
+                      size={20}
+                      strokeWidth={1.3}
+                      style={{ color: "rgba(90,138,112,0.7)" }}
+                    />
+                  </div>
+                  <div className="text-left">
+                    <h4 className="text-sm sm:text-[15px] font-medium tracking-wide uppercase text-white/75 mb-1.5" style={{ color: "rgba(168,148,112,0.8)" }}>
+                      {pillar.title}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-[var(--text-muted)] leading-relaxed font-light">
+                      {pillar.desc}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
         </motion.div>
       </div>
 

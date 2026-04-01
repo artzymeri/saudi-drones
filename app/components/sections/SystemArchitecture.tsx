@@ -28,7 +28,7 @@ const HW_STACK = [
   { icon: Box, label: "Carbon Fibre Airframe", spec: "Toray T700, 1.8 kg dry" },
   { icon: CircuitBoard, label: "6-Layer PCB Stack", spec: "Rogers 4350B, impedance-ctrl" },
   { icon: Zap, label: "Propulsion Array", spec: "4×2807 BLDC, 72N peak" },
-  { icon: Radar, label: "Sensor Fusion Suite", spec: "Dual IMU, RTK-GPS, LiDAR" },
+  { icon: Radar, label: "Sensor Fusion Suite", spec: "Dual IMU, RTK-GPS" },
   { icon: Package, label: "Payload Bay", spec: "Quick-swap, 2.5 kg capacity" },
 ];
 

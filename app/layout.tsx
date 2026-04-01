@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Interceptor Drone | Saudi Ministry of Defence — Production Storyboard",
-  description: "End-to-End Manufacturing Process — Software & Hardware Designed, Built & Owned by Saudi Arabia",
+  title: "Saudi Sovereign Counter-UAS Programme",
+  description: "Sovereign. Advanced. Local. — End-to-End Manufacturing by Saudi Arabia",
   icons: {
     icon: "/saudi_emblem.png",
     apple: "/saudi_emblem.png",

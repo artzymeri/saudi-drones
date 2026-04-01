@@ -29,7 +29,7 @@ const HARDWARE = [
   { icon: Box, title: "Carbon Fibre Airframe", desc: "Lightweight monocoque, radar-low profile", spec: "Toray T700" },
   { icon: CircuitBoard, title: "Custom PCB Stack", desc: "Multi-layer boards, signal-isolated planes", spec: "6-Layer" },
   { icon: Zap, title: "Propulsion Array", desc: "Brushless motors, FOC ESCs, folding props", spec: "72N thrust" },
-  { icon: Radar, title: "Sensor Fusion Suite", desc: "IMU, GPS, LiDAR, barometer, magnetometer", spec: "Dual-IMU" },
+  { icon: Radar, title: "Sensor Fusion Suite", desc: "IMU, GPS, barometer, magnetometer", spec: "Dual-IMU" },
   { icon: Package, title: "Modular Payload Bay", desc: "Quick-swap system for mission-specific loads", spec: "2.5 kg cap" },
   { icon: Thermometer, title: "Thermal Management", desc: "Active cooling channels, heat-sink integration", spec: "Active" },
 ];
