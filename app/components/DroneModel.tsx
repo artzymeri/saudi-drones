@@ -19,7 +19,7 @@ function Drone() {
   return (
     <Float speed={1.5} rotationIntensity={0.1} floatIntensity={0.6}>
       <group ref={groupRef} rotation={[0.3, 0, 0]}>
-        <primitive object={scene} scale={2.2} position={[0, 0, 0]} />
+        <primitive object={scene} scale={2} position={[0, 0, 0]} />
       </group>
     </Float>
   );
@@ -31,7 +31,7 @@ useGLTF.preload("/drone-3d.glb");
 export default function DroneModel() {
   return (
     <Canvas
-      camera={{ position: [0, 2, 10], fov: 40 }}
+      camera={{ position: [0, 1.5, 7], fov: 10 }}
       style={{ width: "100%", height: "100%" }}
       gl={{ antialias: true, alpha: true }}
     >

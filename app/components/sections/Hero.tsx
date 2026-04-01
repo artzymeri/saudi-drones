@@ -446,7 +446,7 @@ export default function Hero() {
 
           {/* Drone 3D model — auto-rotating */}
           <div
-            className="relative z-10 w-full max-w-[600px] aspect-[4/3]"
+            className="relative z-10 w-full max-w-[750px] aspect-[4/3]"
           >
             <Suspense
               fallback={
